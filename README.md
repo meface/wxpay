@@ -6,12 +6,12 @@ Alipay
 Use
 ----------
 
-	$ composer require kaisco/alipay
+	$ composer require kaisco/wxpay
 
 Or
 
 	"require": {
-		"kaisco/alipay": "dev-master"
+		"kaisco/wxpay": "dev-master"
 	}
 	
 

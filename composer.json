@@ -13,6 +13,6 @@
         "php": ">=5.5"
 	},
     "autoload" : {
-        "psr-4": {"Wxpay\\": "src/Alipay/"}
+        "psr-4": {"Wxpay\\": "src/Wxpay/"}
     }
 }
