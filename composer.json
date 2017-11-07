@@ -1,0 +1,18 @@
+{
+    "name": "kaisco/wxpay",
+    "description": "The code come from wechat demo",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kaisco",
+            "email": "lkscoffee@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+	},
+    "autoload" : {
+        "psr-4": {"Wxpay\\": "src/Alipay/"}
+    }
+}
