@@ -190,8 +190,14 @@ class WxPayApi
             curl_setopt($ch, CURLOPT_PROXYPORT, $this->curlProxyPort);
         }
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);//严格校验
+        if (stripos($url, "https://") !== false) {
+            curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        } else {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);//严格校验
+        }
         // 设置header
         curl_setopt($ch, CURLOPT_HEADER, false);
         // 要求结果为字符串且输出到屏幕上
