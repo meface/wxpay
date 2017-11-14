@@ -80,21 +80,6 @@ class WxPayApi
      */
     public $notifyUrl = '';
 
-
-    /**
-     * WxPayResults object
-     * @var object
-     */
-    public $wxPayResult = null;
-
-    /**
-     * WxPayApi constructor.
-     */
-    public function __construct()
-    {
-        $this->wxPayResult = new WxPayResults($this->key);
-    }
-
     /**
      * 统一下单，WxPayUnifiedOrder中out_trade_no、body、total_fee、trade_type必填
      * appid、mchid、spbill_create_ip、nonce_str不需要填入
@@ -143,7 +128,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();// 请求开始时间
         $response = $this->postXmlCurl($xml, $url, false, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);// 上报请求花费时间
 
         return $result;
@@ -371,7 +357,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, false, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -404,7 +391,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, false, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -445,7 +433,8 @@ class WxPayApi
         $xml = $inputObj->ToXml();
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, true, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -484,7 +473,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, false, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -559,7 +549,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, false, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -592,7 +583,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, true, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -654,7 +646,8 @@ class WxPayApi
 
         $startTimeStamp = $this->getMillisecond();//请求开始时间
         $response = $this->postXmlCurl($xml, $url, false, $timeOut);
-        $result = $this->wxPayResult->Init($response);
+        $wxPayResult = new WxPayResults($this->key);
+        $result = $wxPayResult->Init($response);
         $this->reportCostTime($url, $startTimeStamp, $result);//上报请求花费时间
 
         return $result;
@@ -677,7 +670,8 @@ class WxPayApi
         $xml = file_get_contents('php://input');
         //如果返回成功则验证签名
         try {
-            $result = $this->wxPayResult->Init($xml);
+            $wxPayResult = new WxPayResults($this->key);
+            $result = $wxPayResult->Init($xml);
         } catch (WxPayException $e) {
             $msg = $e->errorMessage();
             return false;

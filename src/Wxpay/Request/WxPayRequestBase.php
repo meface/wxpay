@@ -26,7 +26,9 @@ class WxPayRequestBase
      */
     public function __construct($key = '')
     {
-        $this->key = $key;
+        if (!empty($key)) {
+            $this->key = $key;
+        }
     }
 
     /**
