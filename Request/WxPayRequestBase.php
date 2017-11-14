@@ -10,7 +10,7 @@ use WxPay\Exception\WxPayException;
  */
 class WxPayRequestBase
 {
-    protected $values = [];
+    public $values = [];
 
     /**
      * 签名key
