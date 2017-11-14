@@ -217,7 +217,7 @@ class WxPayApi
         } else {
             $error = curl_errno($ch);
             curl_close($ch);
-            throw new WxPayException('curl出错，错误码:$error');
+            throw new WxPayException('curl出错，错误码:' . $error);
         }
     }
 
